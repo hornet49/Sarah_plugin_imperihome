@@ -1,0 +1,10 @@
+{
+  "modules" : { 
+    "veralite": {
+      "description"   : "Communique avec la box domotique Vera Lite",
+      "version"       : "1.5",
+      "IP_Vera"       : "192.168.0.58",
+      "IP_Imperihome" : "X.X.X.X"
+    }
+  }
+}

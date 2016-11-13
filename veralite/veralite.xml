@@ -1,0 +1,69 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruleVeralite" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="ruleVeralite" scope="public">
+    <example>Sarah allume la lampe du salon</example>
+    <tag>out.action=new Object(); </tag>
+	
+	<!--         periphType           -->
+	<!-- "1" : ON/OFF                 -->
+	<!-- "2" : Variateur Lampe        -->
+	<!-- "3" : Scene                  -->
+	<!-- "4" : Sonde de température   -->
+	<!-- "5" : Sonde d'Hygrometrie    -->
+	<!-- "6" : Sonde de lumière       -->
+	<!-- "7" : Sonde de consommation  -->
+	<!-- "8" : DoorLock		          -->
+	<!-- "9" : Volets		          -->
+	<!-- "10" : Virtual switch        -->
+	
+	<!--         periphValue          -->
+	<!-- 0 : OFF / Fermeture          -->
+	<!-- 1 : ON / ouverture           -->
+	<!-- 2 : Variation                -->
+
+	
+    <item>Sarah</item>
+	
+		<one-of>
+			<item>allume<tag>out.action.request="set";out.action.periphValue=1;</tag></item>
+			<item>éteins<tag>out.action.request="set";out.action.periphValue=0;</tag></item>
+			<item>éteint<tag>out.action.request="set";out.action.periphValue=0;</tag></item>
+			<item>ouvre<tag>out.action.request="set";out.action.periphValue=1;</tag></item>
+			<item>ferme<tag>out.action.request="set";out.action.periphValue=0;</tag></item>
+			<item>regle<tag>out.action.request="set";out.action.periphValue=2;</tag></item>
+			<item>Lance la scène<tag>out.action.request="set";out.action.periphId=206;out.action.periphType="3";</tag></item>
+			<item>quelle est<tag>out.action.request="get";</tag></item>
+			<item>comment est<tag>out.action.request="get";</tag></item>
+			<item>donne moi<tag>out.action.request="get";</tag></item>
+		</one-of>
+		
+	<item repeat="0-1" weight="1.5">
+		<one-of>
+			<item>la salle à manger<tag>out.action.periphId=179;out.action.periphType="1";</tag></item>
+			<item>le lustre<tag>out.action.periphId=7;out.action.periphType="1";</tag></item>
+			<item>le salon<tag>out.action.periphId=330;out.action.periphType="1";</tag></item>
+			<item>dehors<tag>out.action.periphId=9;out.action.periphType="1";</tag></item>
+			<item>la temperature extérieur<tag>out.action.periphId=336;out.action.periphType="4";</tag></item>
+			<item>le garage<tag>out.action.periphId=159;out.action.periphType="1";</tag></item>
+			<item>les volets du salon<tag>out.action.periphId=238;out.action.periphType="9";</tag></item>
+			<item>les volets des chambres<tag>out.action.periphId=246;out.action.periphType="9";</tag></item>
+		</one-of>
+	</item>	
+
+	<item repeat="0-1" weight="1.2">
+		<one-of>
+			<item>dix pour cent<tag>out.action.value="10"</tag></item>
+			<item>vingt pour cent<tag>out.action.value="20"</tag></item>
+			<item>trente pour cent<tag>out.action.value="30"</tag></item>
+			<item>quarante pour cent<tag>out.action.value="40"</tag></item>
+			<item>cinquante pour cent<tag>out.action.value="50"</tag></item>
+			<item>soixante pour cent<tag>out.action.value="60"</tag></item>
+			<item>soixantedix pour cent<tag>out.action.value="70"</tag></item>
+			<item>quatrevingt pour cent<tag>out.action.value="80"</tag></item>
+			<item>quatrevingt dix pour cent<tag>out.action.value="90"</tag></item>
+			<item>cent pour cent<tag>out.action.value="100"</tag></item>
+		</one-of>
+	</item>
+	
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/veralite";</tag>
+  </rule>
+</grammar>
